@@ -27,7 +27,7 @@ async def standardize_phone(phone: str):
         response.raise_for_status()
         result = response.json()[0]
         return result
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при запросе к DaData: {str(e)}")
 
 @app.post("/standardize_party")
@@ -41,5 +41,5 @@ async def standardize_party(query: str):
         response.raise_for_status()
         result = response.json()[0]
         return result
-    except requests.exceptions.RequestException as e:
+    except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при запросе к DaData: {str(e)}")
